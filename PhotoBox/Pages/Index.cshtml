@@ -1,0 +1,10 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@foreach(var file in Model.FileList)
+{
+    <img src="@Url.Action("get","photo",new { fileName=file})" style="max-height:200px" class="m-2"/>
+}
