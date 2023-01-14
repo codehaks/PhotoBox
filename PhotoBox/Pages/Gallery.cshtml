@@ -1,0 +1,10 @@
+﻿@page
+@model PhotoBox.Pages.GalleryModel
+@{
+}
+
+
+@foreach (var file in Model.FileList)
+{
+    <img src="@file.FileContent" style="max-height:200px" class="m-2" />
+}
