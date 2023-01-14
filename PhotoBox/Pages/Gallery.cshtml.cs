@@ -12,6 +12,7 @@ public class GalleryModel : PageModel
     {
         _logger = logger;
         _webHostEnvironment = webHostEnvironment;
+        FileList = new List<PhotoViewModel>();
     }
 
     public IList<PhotoViewModel> FileList { get; set; }
@@ -20,8 +21,6 @@ public class GalleryModel : PageModel
         var path = Path.Combine(_webHostEnvironment.ContentRootPath, "Pics");
 
         var files = Directory.GetFiles(path).OrderBy(f => f);//.Select(f => new FileInfo(f).Name).ToList();
-
-        FileList=new List<PhotoViewModel>();
 
         const string imageBase64 = "data:image/png;base64,";
 
@@ -37,8 +36,8 @@ public class GalleryModel : PageModel
 }
 
 
-public class PhotoViewModel
+public record PhotoViewModel
 {
-    public string FileName { get; set; }
-    public string FileContent { get; set; }
+    public required string FileName { get; init; }
+    public required string FileContent { get; init; }
 }
